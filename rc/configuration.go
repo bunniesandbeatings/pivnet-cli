@@ -9,7 +9,9 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-type S3 struct {
+type Repository struct {
+	Name string `yaml:"name"`
+	Type string `yaml:"type"`
 	Bucket string `yaml:"bucket,omitempty"`
 	AccessKeyId string `yaml:"access_key_id,omitempty"`
 	SecretAccessKey string `yaml:"secret_access_key,omitempty"`
@@ -17,7 +19,7 @@ type S3 struct {
 }
 
 type rcYAML struct {
-	S3 S3 `yaml:"s3,omitempty"`
+	Repositories *[]Repository `yaml:"repositories"`
 }
 
 func Read() (*rcYAML, error) {
